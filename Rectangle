@@ -1,0 +1,51 @@
+
+class Rectangle:
+    def __init__(self, x1, y1, x2, y2):
+        self.x1 = min(x1, x2)
+        self.y1 = min(y1, y2)
+        self.x2 = max(x1, x2)
+        self.y2 = max(y1, y2)
+
+    def area(self):
+        return (self.x2 - self.x1) * (self.y2 - self.y1)
+
+    def perimeter(self):
+        return 2 * ((self.x2 - self.x1) + (self.y2 - self.y1))
+
+    def isOver(self, other):
+        return not (
+            self.x2 <= other.x1 or
+            self.x1 >= other.x2 or
+            self.y2 <= other.y1 or
+            self.y1 >= other.y2
+        )
+
+
+print("Първи правоъгълник:")
+x1 = float(input("x1 = "))
+y1 = float(input("y1 = "))
+x2 = float(input("x2 = "))
+y2 = float(input("y2 = "))
+
+r1 = Rectangle(x1, y1, x2, y2)
+
+print("Лице:", r1.area())
+print("Периметър:", r1.perimeter())
+
+
+print("\nВтори правоъгълник:")
+x1 = float(input("x1 = "))
+y1 = float(input("y1 = "))
+x2 = float(input("x2 = "))
+y2 = float(input("y2 = "))
+
+r2 = Rectangle(x1, y1, x2, y2)
+
+print("Лице:", r2.area())
+print("Периметър:", r2.perimeter())
+
+
+if r1.isOver(r2):
+    print("Правоъгълниците се застъпват!")
+else:
+    print("Правоъгълниците не се застъпват!")
